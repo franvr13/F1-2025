@@ -1,0 +1,12 @@
+{
+    "driverStandings": [
+      { "position": 1, "driver": "L. Norris", "constructor": "McLaren", "points": 25 },
+      { "position": 2, "driver": "M. Verstappen", "constructor": "Red Bull", "points": 18 },
+      { "position": 3, "driver": "G. Russell", "constructor": "Mercedes", "points": 15 }
+    ],
+    "constructorStandings": [
+      { "position": 1, "constructor": "McLaren", "points": 27 },
+      { "position": 2, "constructor": "Mercedes", "points": 27 },
+      { "position": 3, "constructor": "Red Bull", "points": 18 }
+    ]
+}
