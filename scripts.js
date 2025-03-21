@@ -74,7 +74,7 @@ backToTopButton.addEventListener('click', () => {
 // Función para obtener la clasificación de pilotos
 async function getDriverStandings() {
     try {
-        const response = await fetch('http://localhost:3000/driverStandings');
+        const response = await fetch('https://f1-2025-franvr13s-projects.vercel.app/driverStandings');
         const data = await response.json();
         const tbody = document.querySelector('#driver-standings tbody');
         tbody.innerHTML = data.map(standing => `
@@ -93,7 +93,7 @@ async function getDriverStandings() {
 // Función para obtener la clasificación de constructores
 async function getConstructorStandings() {
     try {
-        const response = await fetch('http://localhost:3000/constructorStandings');
+        const response = await fetch('https://f1-2025-franvr13s-projects.vercel.app/constructorStandings');
         const data = await response.json();
         const tbody = document.querySelector('#constructor-standings tbody');
         tbody.innerHTML = data.map(standing => `
