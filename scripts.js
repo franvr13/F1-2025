@@ -71,6 +71,7 @@ backToTopButton.addEventListener('click', () => {
     });
 });
 
+// Función para obtener la clasificación de pilotos
 async function getDriverStandings() {
     try {
         const response = await fetch('https://f1-2025.vercel.app/driverStandings');
@@ -89,6 +90,7 @@ async function getDriverStandings() {
     }
 }
 
+// Función para obtener la clasificación de constructores
 async function getConstructorStandings() {
     try {
         const response = await fetch('https://f1-2025.vercel.app/constructorStandings');
