@@ -71,13 +71,14 @@ backToTopButton.addEventListener('click', () => {
     });
 });
 
-// Función para obtener la clasificación de pilotos
-async function getDriverStandings() {
+async function loadLocalData() {
     try {
-        const response = await fetch('https://f1-2025.vercel.app/driverStandings');
+        const response = await fetch('data.json'); // Carga el archivo JSON estático
         const data = await response.json();
-        const tbody = document.querySelector('#driver-standings tbody');
-        tbody.innerHTML = data.map(standing => `
+
+        // Llenar la tabla de pilotos
+        const driverTbody = document.querySelector('#driver-standings tbody');
+        driverTbody.innerHTML = data.driverStandings.map(standing => `
             <tr>
                 <td>${standing.position}</td>
                 <td>${standing.driver}</td>
@@ -85,18 +86,10 @@ async function getDriverStandings() {
                 <td>${standing.points}</td>
             </tr>
         `).join('');
-    } catch (error) {
-        console.error('Error al obtener la clasificación de pilotos:', error);
-    }
-}
 
-// Función para obtener la clasificación de constructores
-async function getConstructorStandings() {
-    try {
-        const response = await fetch('https://f1-2025.vercel.app/constructorStandings');
-        const data = await response.json();
-        const tbody = document.querySelector('#constructor-standings tbody');
-        tbody.innerHTML = data.map(standing => `
+        // Llenar la tabla de constructores
+        const constructorTbody = document.querySelector('#constructor-standings tbody');
+        constructorTbody.innerHTML = data.constructorStandings.map(standing => `
             <tr>
                 <td>${standing.position}</td>
                 <td>${standing.constructor}</td>
@@ -104,11 +97,10 @@ async function getConstructorStandings() {
             </tr>
         `).join('');
     } catch (error) {
-        console.error('Error al obtener la clasificación de constructores:', error);
+        console.error('Error al cargar los datos locales:', error);
     }
 }
 
 window.addEventListener('load', function () {
-    getDriverStandings();
-    getConstructorStandings();
+    loadLocalData();
 });
