@@ -1,25 +1,11 @@
 {
-    "name": "f1-api",
-    "version": "1.0.0",
-    "scripts": {
-      "start": "json-server --watch db.json --port 3000"
-    },
-    "dependencies": {
-      "json-server": "^0.17.0"
-    },
-    "vercelConfig": {
-        "version": 2,
-        "builds": [
-            {
-                "src": "package.json",
-                "use": "@vercel/static-build"
-            }
-        ],
-        "routes": [
-            {
-                "src": "/(.*)",
-                "dest": "/"
-            }
-        ]
-    }
+  "name": "f1-api",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "json-server --watch db.json --port 3000",
+    "vercel-build": "echo 'No build needed for json-server'"
+  },
+  "dependencies": {
+    "json-server": "^0.17.0"
+  }
 }
