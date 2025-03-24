@@ -457,6 +457,31 @@ footer p {
         width: 60%;
     }
 
+    @media (max-width: 768px) {
+        .section {
+            opacity: 1 !important; /* Fuerza la visibilidad */
+            transform: none !important;
+            transition: none !important;
+        }
+        
+        .section.visible .race, 
+        .section.visible .result {
+            opacity: 1 !important;
+            transform: none !important;
+        }
+        
+        /* Asegura que los grids se muestren correctamente */
+        .calendar-grid, .results-grid {
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+        
+        .race img {
+            width: 80%;
+        }
+    }
+    
+
     /* Tablas responsivas */
     #driver-standings {
         overflow-x: auto;

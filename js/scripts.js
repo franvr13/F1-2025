@@ -22,8 +22,7 @@ class F1App {
         this.themeIcon = this.themeToggle.querySelector('i');
         
         // Cargar tema guardado o usar preferencia del sistema
-        const savedTheme = localStorage.getItem('theme') || 
-                          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
         this.setTheme(savedTheme);
         
         // Escuchar cambios en el botón
@@ -48,23 +47,24 @@ class F1App {
 
     initPreloader() {
         const preloader = document.getElementById('preloader');
+        if (!preloader) return;
+    
+        // Detección de móvil
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
         
-        // Ocultar después de que TODO esté listo
-        Promise.all([
-            document.fonts.ready,
-            new Promise(resolve => window.addEventListener('load', resolve))
-        ]).then(() => {
-            preloader.classList.add('hidden');
-            setTimeout(() => {
-                preloader.remove();
-            }, CONFIG.transitionDuration);
-        }).catch(() => {
-            // Fallback por si hay error
+        if (isMobile) {
+            // Para móviles, ocultar más rápido
             setTimeout(() => {
                 preloader.classList.add('hidden');
+                setTimeout(() => preloader.remove(), 300);
+            }, 1500);
+        } else {
+            // Para desktop mantener la animación normal
+            window.addEventListener('load', () => {
+                preloader.classList.add('hidden');
                 setTimeout(() => preloader.remove(), CONFIG.transitionDuration);
-            }, 2000);
-        });
+            });
+        }
     }
 
     // Navegación
@@ -119,20 +119,28 @@ class F1App {
 
     // Observador de visibilidad para animaciones
     initVisibilityObserver() {
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1 // Baja el threshold para móviles
+        };
+    
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
+                if (entry.isIntersecting || entry.intersectionRatio > 0) {
                     entry.target.classList.add('visible');
                     
-                    // Animar elementos hijos con delay escalonado
                     const items = entry.target.querySelectorAll('.race, .result');
                     items.forEach((item, index) => {
                         item.style.transitionDelay = `${index * 0.1}s`;
                     });
+                    
+                    // Deja de observar después de mostrar
+                    observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.1 });
-
+        }, observerOptions);
+    
         document.querySelectorAll('.section').forEach(section => {
             observer.observe(section);
         });
@@ -207,24 +215,19 @@ class F1App {
             'Gran Premio de Abu Dabi'
         ];
     
-        // Obtener carreras que ya tienen resultados
-        const existingRaces = Array.from(resultsContainer.querySelectorAll('.result h3'))
-                                  .map(h3 => h3.textContent);
-    
-        // Filtrar para solo añadir las que no existen
-        const racesToAdd = allRaces.filter(race => !existingRaces.includes(race));
-    
-        // Generar solo los resultados faltantes
-        racesToAdd.forEach(raceName => {
-            const resultDiv = document.createElement('div');
-            resultDiv.className = 'result';
-            resultDiv.innerHTML = `
-                <h3>${raceName}</h3>
-                ${Array(10).fill(`<p>${CONFIG.resultPlaceholder}</p>`).join('')}
-            `;
-            resultsContainer.appendChild(resultDiv);
+ // Después de generar los elementos, forzar su visualización en móviles
+    if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+    const resultsSection = document.getElementById('resultados');
+    if (resultsSection) {
+        resultsSection.classList.add('visible');
+        resultsContainer.querySelectorAll('.result').forEach((item, index) => {
+            item.style.opacity = 1;
+            item.style.transform = 'none';
+            item.style.transitionDelay = `${index * 0.1}s`;
         });
     }
+}
+}
 
     // Mostrar notificación de error
     showErrorNotification() {
