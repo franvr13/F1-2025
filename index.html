@@ -7,7 +7,7 @@
         content="Toda la información sobre la Temporada 2025 de Fórmula 1. Calendario, resultados y clasificaciones de pilotos y constructores.">
     <meta name="keywords" content="Fórmula 1, F1, Temporada 2025, Calendario F1, Resultados F1, Clasificaciones F1">
     <title>F1 2025</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
@@ -31,6 +31,9 @@
                     <li><a href="#resultados">Resultados</a></li>
                     <li><a href="#clasificaciones">Clasificaciones</a></li>
                 </ul>
+                <button id="theme-toggle" aria-label="Cambiar modo claro/oscuro">
+                    <i class="fas fa-moon"></i>
+                </button>
             </nav>
         </div>
     </header>
@@ -54,7 +57,8 @@
                     <p>Circuito: Circuito de Albert Park</p>
                     <p>Ubicación: Melbourne, Australia</p>
                     <p>Longitud: 5.303 km</p>
-                    <img src="images/circuitos/Albert-Park.png" alt="Gran Premio de Australia">
+                    <img src="images/circuitos/Albert-Park.png" alt="Gran Premio de Australia" loading="lazy" 
+                    onload="this.classList.add('loaded')">
                 </div>
                 <div class="race">
                     <h3>Gran Premio de China</h3>
@@ -62,7 +66,8 @@
                     <p>Circuito: Circuito Internacional de Shanghái</p>
                     <p>Ubicación: Shanghái, China</p>
                     <p>Longitud: 5.451 km</p>
-                    <img src="images/circuitos/Shanghái-China.png" alt="Gran Premio de China">
+                    <img src="images/circuitos/Shanghái-China.png" alt="Gran Premio de China" loading="lazy" 
+                    onload="this.classList.add('loaded')">
                 </div>
                 <div class="race">
                     <h3>Gran Premio de Japón</h3>
@@ -70,7 +75,8 @@
                     <p>Circuito: Circuito de Suzuka</p>
                     <p>Ubicación: Suzuka, Mie, Japón</p>
                     <p>Longitud: 5,807 km</p>
-                    <img src="images/circuitos/Suzuka-Japón.png" alt="Gran Premio de Japón">
+                    <img src="images/circuitos/Suzuka-Japón.png" alt="Gran Premio de Japón" loading="lazy" 
+                    onload="this.classList.add('loaded')">
                 </div>
                 <div class="race">
                     <h3>Gran Premio de Baréin</h3>
@@ -78,7 +84,8 @@
                     <p>Circuito: Circuito Internacional de Baréin</p>
                     <p>Ubicación: Sakhir, Baréin</p>
                     <p>Longitud: 5,412 km</p>
-                    <img src="images/circuitos/Sakhir-Baréin.png" alt="Gran Premio de Baréin">
+                    <img src="images/circuitos/Sakhir-Baréin.png" alt="Gran Premio de Baréin" loading="lazy" 
+                    onload="this.classList.add('loaded')">
                 </div>
                 <div class="race">
                     <h3>Gran Premio de Arabia Saudita</h3>
@@ -86,7 +93,8 @@
                     <p>Circuito: Jeddah Corniche Circuit</p>
                     <p>Ubicación: Jeddah, Saudi Arabia</p>
                     <p>Longitud: 6.174 km</p>
-                    <img src="images/circuitos/Arabia-Saudita.png" alt="Gran Premio de Arabia Saudita">
+                    <img src="images/circuitos/Arabia-Saudita.png" alt="Gran Premio de Arabia Saudita" loading="lazy" 
+                    onload="this.classList.add('loaded')">
                 </div>
                 <div class="race">
                     <h3>Gran Premio de Miami</h3>
@@ -94,7 +102,8 @@
                     <p>Circuito: Miami International Autodrome</p>
                     <p>Ubicación: Hard Rock Stadium, Miami Gardens, Florida, U.S.</p>
                     <p>Longitud: 5.412 km</p>
-                    <img src="images/circuitos/Miami.png" alt="Gran Premio de Miami">
+                    <img src="images/circuitos/Miami.png" alt="Gran Premio de Miami" loading="lazy" 
+                    onload="this.classList.add('loaded')">
                 </div>
                 <div class="race">
                     <h3>Gran Premio de Emilia-Romaña</h3>
@@ -102,7 +111,8 @@
                     <p>Circuito: Autodromo Enzo e Dino Ferrari</p>
                     <p>Ubicación: Imola, Emilia-Romagna, Italia.</p>
                     <p>Longitud: 4,909 km</p>
-                    <img src="images/circuitos/Emilia-Romagna.png" alt="Gran Premio de Emilia Romagna">
+                    <img src="images/circuitos/Emilia-Romagna.png" alt="Gran Premio de Emilia Romagna" loading="lazy" 
+                    onload="this.classList.add('loaded')">
                 </div>
                 <div class="race">
                     <h3>Gran Premio de Mónaco</h3>
@@ -110,7 +120,8 @@
                     <p>Circuito: Circuit de Monaco</p>
                     <p>Ubicación: Monaco.</p>
                     <p>Longitud: 3,330 km</p>
-                    <img src="images/circuitos/Mónaco.png" alt="Gran Premio de Mónaco">
+                    <img src="images/circuitos/Mónaco.png" alt="Gran Premio de Mónaco" loading="lazy" 
+                    onload="this.classList.add('loaded')">
                 </div>
                 <div class="race">
                     <h3>Gran Premio de España</h3>
@@ -118,7 +129,8 @@
                     <p>Circuito: Circuito de Barcelona-Cataluña</p>
                     <p>Ubicación: Montmeló, Barcelona.</p>
                     <p>Longitud: 4,657 km</p>
-                    <img src="images/circuitos/Barcelona.png" alt="Gran Premio de España">
+                    <img src="images/circuitos/Barcelona.png" alt="Gran Premio de España" loading="lazy" 
+                    onload="this.classList.add('loaded')">
                 </div>
                 <div class="race">
                     <h3>Gran Premio de Canadá</h3>
@@ -126,7 +138,8 @@
                     <p>Circuito: Circuito Gilles Villeneuve</p>
                     <p>Ubicación: Montreal, Canadá.</p>
                     <p>Longitud: 4,361 km</p>
-                    <img src="images/circuitos/Canadá.png" alt="Gran Premio de Canadá">
+                    <img src="images/circuitos/Canadá.png" alt="Gran Premio de Canadá" loading="lazy" 
+                    onload="this.classList.add('loaded')">
                 </div>
                 <div class="race">
                     <h3>Gran Premio de Austria</h3>
@@ -134,7 +147,8 @@
                     <p>Circuito: Red Bull Ring</p>
                     <p>Ubicación: Spielberg, Austria.</p>
                     <p>Longitud: 4,318 km</p>
-                    <img src="images/circuitos/Austria.png" alt="Gran Premio de Austria">
+                    <img src="images/circuitos/Austria.png" alt="Gran Premio de Austria" loading="lazy" 
+                    onload="this.classList.add('loaded')">
                 </div>
                 <div class="race">
                     <h3>Gran Premio de Gran Bretaña</h3>
@@ -142,7 +156,8 @@
                     <p>Circuito: Circuito de Silverstone</p>
                     <p>Ubicación: Silverstone, Northamptonshire, Inglaterra, Reino Unido.</p>
                     <p>Longitud: 5,901 km</p>
-                    <img src="images/circuitos/Great-Britain.png" alt="Gran Premio de Gran Bretaña">
+                    <img src="images/circuitos/Great-Britain.png" alt="Gran Premio de Gran Bretaña" loading="lazy" 
+                    onload="this.classList.add('loaded')">
                 </div>
                 <div class="race">
                     <h3>Gran Premio de Bélgica</h3>
@@ -150,7 +165,8 @@
                     <p>Circuito: Circuito de Spa-Francorchamps</p>
                     <p>Ubicación: Francorchamps, Provincia de Lieja, Bélgica.</p>
                     <p>Longitud: 7,004 km</p>
-                    <img src="images/circuitos/Belgium.png" alt="Gran Premio de Bélgica">
+                    <img src="images/circuitos/Belgium.png" alt="Gran Premio de Bélgica" loading="lazy" 
+                    onload="this.classList.add('loaded')">
                 </div>
                 <div class="race">
                     <h3>Gran Premio de Hungría</h3>
@@ -158,7 +174,8 @@
                     <p>Circuito: Hungaroring</p>
                     <p>Ubicación: Mogyoród, Hungría.</p>
                     <p>Longitud: 4,381 km</p>
-                    <img src="images/circuitos/Hungar.png" alt="Gran Premio de Hungría">
+                    <img src="images/circuitos/Hungar.png" alt="Gran Premio de Hungría" loading="lazy" 
+                    onload="this.classList.add('loaded')">
                 </div>
                 <div class="race">
                     <h3>Gran Premio de Los Países Bajos</h3>
@@ -166,7 +183,8 @@
                     <p>Circuito: Circuito de Zandvoort</p>
                     <p>Ubicación: Zandvoort, Países Bajos.</p>
                     <p>Longitud: 4,307 km</p>
-                    <img src="images/circuitos/Netherlands.png" alt="Gran Premio de Los Países Bajos">
+                    <img src="images/circuitos/Netherlands.png" alt="Gran Premio de Los Países Bajos" loading="lazy" 
+                    onload="this.classList.add('loaded')">
                 </div>
                 <div class="race">
                     <h3>Gran Premio de Italia</h3>
@@ -174,7 +192,8 @@
                     <p>Circuito: Autodromo Nacional de Monza</p>
                     <p>Ubicación: Monza, Italia.</p>
                     <p>Longitud: 5,793 km</p>
-                    <img src="images/circuitos/Italy.png" alt="Gran Premio de Italia">
+                    <img src="images/circuitos/Italy.png" alt="Gran Premio de Italia" loading="lazy" 
+                    onload="this.classList.add('loaded')">
                 </div>
                 <div class="race">
                     <h3>Gran Premio de Azerbaiyán</h3>
@@ -182,7 +201,8 @@
                     <p>Circuito: Circuito callejero de Bakú</p>
                     <p>Ubicación: Bakú, Azerbaiyán.</p>
                     <p>Longitud: 6,003 km</p>
-                    <img src="images/circuitos/Azerbaijan.png" alt="Gran Premio de Azerbaiyán">
+                    <img src="images/circuitos/Azerbaijan.png" alt="Gran Premio de Azerbaiyán" loading="lazy" 
+                    onload="this.classList.add('loaded')">
                 </div>
                 <div class="race">
                     <h3>Gran Premio de Singapur</h3>
@@ -190,7 +210,8 @@
                     <p>Circuito: Circuito Urbano Marina Bay</p>
                     <p>Ubicación: Singapur.</p>
                     <p>Longitud: 5,065 km</p>
-                    <img src="images/circuitos/Singapore.png" alt="Gran Premio de Singapur">
+                    <img src="images/circuitos/Singapore.png" alt="Gran Premio de Singapur" loading="lazy" 
+                    onload="this.classList.add('loaded')">
                 </div>
                 <div class="race">
                     <h3>Gran Premio de Estados Unidos</h3>
@@ -198,7 +219,8 @@
                     <p>Circuito: Circuito de las Américas</p>
                     <p>Ubicación: Austin, Estados Unidos.</p>
                     <p>Longitud: 5,513 km</p>
-                    <img src="images/circuitos/USA.png" alt="Gran Premio de Estados Unidos">
+                    <img src="images/circuitos/USA.png" alt="Gran Premio de Estados Unidos" loading="lazy" 
+                    onload="this.classList.add('loaded')">
                 </div>
                 <div class="race">
                     <h3>Gran Premio de México</h3>
@@ -206,7 +228,8 @@
                     <p>Circuito: Autódromo Hermanos Rodríguez</p>
                     <p>Ubicación: Ciudad de México, México.</p>
                     <p>Longitud: 4,304 km</p>
-                    <img src="images/circuitos/Mexico.png" alt="Gran Premio de México">
+                    <img src="images/circuitos/Mexico.png" alt="Gran Premio de México" loading="lazy" 
+                    onload="this.classList.add('loaded')">
                 </div>
                 <div class="race">
                     <h3>Gran Premio de Brasil</h3>
@@ -214,7 +237,8 @@
                     <p>Circuito: Interlagos</p>
                     <p>Ubicación: São Paulo, Brasil.</p>
                     <p>Longitud: 4.309 km</p>
-                    <img src="images/circuitos/Brazil.png" alt="Gran Premio de Brasil">
+                    <img src="images/circuitos/Brazil.png" alt="Gran Premio de Brasil" loading="lazy" 
+                    onload="this.classList.add('loaded')">
                 </div>
                 <div class="race">
                     <h3>Gran Premio de Las Vegas</h3>
@@ -222,7 +246,8 @@
                     <p>Circuito: Circuito callejero de Las Vegas</p>
                     <p>Ubicación: Las Vegas Strip, Estados Unidos.</p>
                     <p>Longitud: 6,201 km</p>
-                    <img src="images/circuitos/Las-Vegas.png" alt="Gran Premio de Las Vegas">
+                    <img src="images/circuitos/Las-Vegas.png" alt="Gran Premio de Las Vegas" loading="lazy" 
+                    onload="this.classList.add('loaded')">
                 </div>
                 <div class="race">
                     <h3>Gran Premio de Catar</h3>
@@ -230,7 +255,8 @@
                     <p>Circuito: Circuito Internacional de Losail</p>
                     <p>Ubicación: Lusail, Catar.</p>
                     <p>Longitud: 5,380 km</p>
-                    <img src="images/circuitos/Qatar.png" alt="Gran Premio de Catar">
+                    <img src="images/circuitos/Qatar.png" alt="Gran Premio de Qatar" loading="lazy" 
+                    onload="this.classList.add('loaded')">
                 </div>
                 <div class="race">
                     <h3>Gran Premio de Abu Dabi</h3>
@@ -238,7 +264,8 @@
                     <p>Circuito: Yas Marina Circuit</p>
                     <p>Ubicación: Isla de Yas, Abu Dabi, Emiratos Árabes Unidos.</p>
                     <p>Longitud: 5,281 km</p>
-                    <img src="images/circuitos/Abu-Dhabi.png" alt="Gran Premio de Abu Dabi">
+                    <img src="images/circuitos/Abu-Dhabi.png" alt="Gran Premio de Abu Dahbi" loading="lazy" 
+                    onload="this.classList.add('loaded')">
                 </div>
             </div>
         </div>
@@ -576,10 +603,10 @@
             <table id="driver-standings">
                 <thead>
                     <tr>
-                        <th>Posición</th>
-                        <th>Piloto</th>
-                        <th>Constructor</th>
-                        <th>Puntos</th>
+                        <th scope="col">Posición</th>
+                        <th scope="col">Piloto</th>
+                        <th scope="col">Constructor</th>
+                        <th scope="col">Puntos</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -625,6 +652,7 @@
                     aria-label="Instagram">
                     <i class="fa-brands fa-instagram"></i>
                 </a>
+            </div>
         </div>
     </footer>
 
@@ -633,7 +661,7 @@
     </button>
 
 </body>
-<script src="scripts.js"></script>
+<script src="/js/scripts.js"></script>
 
 <!-- Vercel Analytics -->
 <script defer src="/_vercel/insights/script.js"></script>
