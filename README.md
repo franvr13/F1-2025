@@ -21,4 +21,6 @@ El objetivo principal de esta plataforma es brindar una experiencia fácil y com
 ## Objetivos del Proyecto
 Este proyecto no solo busca ofrecer un recurso útil para los fanáticos de la Fórmula 1, sino que también sirve como una muestra de mis habilidades en desarrollo web y backend, con el fin de abrir nuevas oportunidades profesionales en el mundo de la programación.
 
+- Francisco Villalba Roldán: https://www.linkedin.com/in/franciscovillalbaroldán/
+
 ¡Gracias por visitar F1 2025! 🚀🏎️
