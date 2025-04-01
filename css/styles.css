@@ -56,6 +56,16 @@ body {
     line-height: 1.6;
 }
 
+.points {
+    font-weight: bold;
+    color: var(--main-color);
+}
+
+.info {
+    font-weight: bold;
+    color: var(--main-color);
+}
+
 /* Layout */
 .container {
     width: 90%;
