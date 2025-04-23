@@ -358,6 +358,108 @@ nav ul li a:hover::after {
     transform: scale(1.05);
 }
 
+/* Teams */
+/* Contenedor principal (grid responsive) */
+.teams-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 1.5rem; 
+}
+  
+  /* Tarjeta de equipo (efecto hover + sombras) */
+  .team-card {
+    background-color: var(--bg-medium-active);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    width: 100%; 
+    min-height: 400px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+}
+  
+  .team-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .team-link {
+    text-decoration: none; 
+    color: inherit; 
+    display: block; 
+}
+
+.team-link .team-card {
+    cursor: pointer; 
+}
+  
+  /* Logo del equipo */
+  .team-logo {
+    padding: 1.5rem;
+    text-align: center;
+  }
+  
+  .team-logo img {
+    max-width: 180px;
+    height: auto;
+    object-fit: contain;
+  }
+  
+  /* Info del equipo (nombre, pilotos, etc.) */
+  .team-info {
+    padding: 1.5rem;
+  }
+  
+  .team-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+    white-space: break-word;
+    text-align: center;
+}
+  
+  .team-drivers {
+    margin: 1rem 0;
+  }
+  
+  .driver {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  .driver-number {
+    font-weight: 600;
+    margin-right: 0.5rem;
+  }
+  
+  .driver-name {
+    font-weight: 600;
+  }
+
+  .car {
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .car img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 2.5rem;
+}	
+  
+  /* Responsive (mobile) */
+  @media (max-width: 768px) {
+    .teams-container {
+      grid-template-columns: 1fr;
+    }
+    }
+
 /* Standings Section */
 #clasificaciones {
     background-color: var(--bg-medium);
