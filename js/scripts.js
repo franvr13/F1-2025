@@ -20,11 +20,11 @@ class F1App {
     initTheme() {
         this.themeToggle = document.getElementById('theme-toggle');
         this.themeIcon = this.themeToggle.querySelector('i');
-        
+
         // Cargar tema guardado o usar preferencia del sistema
         const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
         this.setTheme(savedTheme);
-        
+
         // Escuchar cambios en el botón
         this.themeToggle.addEventListener('click', () => {
             const newTheme = document.documentElement.classList.contains('light-mode') ? 'dark' : 'light';
@@ -48,10 +48,10 @@ class F1App {
     initPreloader() {
         const preloader = document.getElementById('preloader');
         if (!preloader) return;
-    
+
         // Detección de móvil
         const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        
+
         if (isMobile) {
             // Para móviles, ocultar más rápido
             setTimeout(() => {
@@ -94,9 +94,9 @@ class F1App {
     scrollToSection(sectionId) {
         const section = document.getElementById(sectionId);
         if (section) {
-            section.scrollIntoView({ 
-                behavior: 'smooth', 
-                block: 'start' 
+            section.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
             });
         }
     }
@@ -104,10 +104,10 @@ class F1App {
     // Botón "volver arriba"
     initBackToTop() {
         const backToTopButton = document.getElementById('back-to-top');
-        
+
         window.addEventListener('scroll', () => {
             backToTopButton.classList.toggle(
-                'visible', 
+                'visible',
                 window.pageYOffset > CONFIG.scrollOffset
             );
         });
@@ -124,23 +124,23 @@ class F1App {
             rootMargin: '0px',
             threshold: 0.1 // Baja el threshold para móviles
         };
-    
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting || entry.intersectionRatio > 0) {
                     entry.target.classList.add('visible');
-                    
+
                     const items = entry.target.querySelectorAll('.race, .result');
                     items.forEach((item, index) => {
                         item.style.transitionDelay = `${index * 0.1}s`;
                     });
-                    
+
                     // Deja de observar después de mostrar
                     observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
-    
+
         document.querySelectorAll('.section').forEach(section => {
             observer.observe(section);
         });
@@ -151,7 +151,7 @@ class F1App {
         try {
             const response = await fetch('data/data.json');
             if (!response.ok) throw new Error('Error al cargar los datos');
-            
+
             const data = await response.json();
             this.renderStandings(data);
             this.generateEmptyResults(); // <-- Esta línea debe estar aquí
@@ -188,10 +188,10 @@ class F1App {
     generateEmptyResults() {
         const resultsContainer = document.querySelector('.results-grid');
         if (!resultsContainer) return;
-    
+
         // Lista completa de carreras (sin incluir Australia y China que ya tienen resultados)
         const allRaces = [
-            'Gran Premio de Japón', 
+            'Gran Premio de Japón',
             'Gran Premio de Baréin',
             'Gran Premio de Arabia Saudita',
             'Gran Premio de Miami',
@@ -214,20 +214,20 @@ class F1App {
             'Gran Premio de Catar',
             'Gran Premio de Abu Dabi'
         ];
-    
- // Después de generar los elementos, forzar su visualización en móviles
-    if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-    const resultsSection = document.getElementById('resultados');
-    if (resultsSection) {
-        resultsSection.classList.add('visible');
-        resultsContainer.querySelectorAll('.result').forEach((item, index) => {
-            item.style.opacity = 1;
-            item.style.transform = 'none';
-            item.style.transitionDelay = `${index * 0.1}s`;
-        });
+
+        // Después de generar los elementos, forzar su visualización en móviles
+        if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+            const resultsSection = document.getElementById('resultados');
+            if (resultsSection) {
+                resultsSection.classList.add('visible');
+                resultsContainer.querySelectorAll('.result').forEach((item, index) => {
+                    item.style.opacity = 1;
+                    item.style.transform = 'none';
+                    item.style.transitionDelay = `${index * 0.1}s`;
+                });
+            }
+        }
     }
-}
-}
 
     // Mostrar notificación de error
     showErrorNotification() {
@@ -235,7 +235,7 @@ class F1App {
         notification.className = 'error-notification';
         notification.textContent = 'Error al cargar los datos. Por favor, inténtalo de nuevo más tarde.';
         document.body.appendChild(notification);
-        
+
         setTimeout(() => {
             notification.remove();
         }, 5000);
@@ -255,7 +255,52 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-// Iniciar la aplicación
-document.addEventListener('DOMContentLoaded', () => {
+// API Jolpica para mantener los datos actualizados
+async function cargarPilotos() {
+    const res = await fetch("https://api.jolpi.ca/ergast/f1/current/driverStandings.json");
+    const data = await res.json();
+
+    const pilotos = data.MRData.StandingsTable.StandingsLists[0].DriverStandings;
+
+    const tbody = document.querySelector("#driver-standings tbody");
+    tbody.innerHTML = "";
+
+    pilotos.forEach(p => {
+        const fila = document.createElement("tr");
+        fila.innerHTML = `
+            <td>${p.position}</td>
+            <td>${p.Driver.givenName} ${p.Driver.familyName}</td>
+            <td>${p.Driver.nationality}</td>
+            <td>${p.Constructors[0].name}</td>
+            <td>${p.points}</td>
+            `;
+        tbody.appendChild(fila);
+    });
+}
+
+async function cargarConstructores() {
+    const res = await fetch("https://api.jolpi.ca/ergast/f1/current/constructorStandings.json");
+    const data = await res.json();
+
+    const constructores = data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings;
+
+    const tbody = document.querySelector("#constructor-standings tbody");
+    tbody.innerHTML = "";
+
+    constructores.forEach(c => {
+        const fila = document.createElement("tr");
+        fila.innerHTML = `
+            <td>${c.position}</td>
+            <td>${c.Constructor.name}</td>
+            <td>${c.Constructor.nationality}</td>
+            <td>${c.points}</td>
+            `;
+        tbody.appendChild(fila);
+    });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    cargarPilotos();
+    cargarConstructores();
     new F1App();
 });
